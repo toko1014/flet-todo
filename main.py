@@ -12,11 +12,11 @@ def main(page: ft.Page):
     #ドラッグ中のビジュアルフィードバック（受け入れ可能なターゲットの上に来た時）
     def drag_will_accept(e):
         #ドロップ先となるタスクの枠線を白くして、どこにドロップできるかわかりやすくする
-        e.control.content.border = ft.Border.all(2,ft.Colors.WHITE)
+        e.control.content.border = ft.border.all(2,ft.Colors.WHITE)
         e.control.update()
 
     #ドラッグがターゲットから離れた時の処理
-    def drag_leavea(e):
+    def drag_leave(e):
         #枠線を元に戻す
         e.control.content.border = None
         e.control.update()
@@ -29,7 +29,7 @@ def main(page: ft.Page):
         dest = e.control
 
         #ドロップ先の枠線を元に戻す
-        dest.content.boder = None
+        dest.content.border = None
 
         #もしドラッグ元とドロップ先が同じなら何もしない
         if src == dest:
@@ -38,7 +38,7 @@ def main(page: ft.Page):
         
         #tasks_view.controlsリスト内でのインデックスを取得
         src_index = tasks_view.controls.index(src)
-        dest_index = tasks_view.controls.inndex(dest)
+        dest_index = tasks_view.controls.index(dest)
 
         #リストからドラッグ元のタスクを一旦削除
         tasks_view.controls.pop(src_index)
@@ -105,7 +105,7 @@ def main(page: ft.Page):
                 content=task_row,
                 on_will_accept=drag_will_accept,
                 on_accept=move_task,
-                on_leave=drag_leavea,
+                on_leave=drag_leave,
             )
 
             #4.各コントロールに、親となるtask_wrapperをデータとして持たせる
