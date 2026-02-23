@@ -1,4 +1,4 @@
-# Flet ToDo App (Drag & Drop Prototype)
+# Flet ToDo App
 
 直感的な操作を目指して開発した、ドラッグ＆ドロップ機能付きのToDoアプリケーションです。
 
